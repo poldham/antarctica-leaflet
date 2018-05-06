@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/ADDSimplebasemap_0.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[-1.65775677658,-120.402794345],[-1.65775677658,59.5972056549]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        function pop_ADDSimplebasemap_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Category'] !== null ? Autolinker.link(String(feature.properties['Category'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_ADDSimplebasemap_0_0(feature) {
+            var context = {
+                feature: feature,
+                variables: {}
+            };
+            // Start of if blocks and style check logic
+            if (ADDSimplebasemap_0rule0_eval_expression(context)) {
+                  return {
+                pane: 'pane_ADDSimplebasemap_0',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(207,225,235,1.0)',
+            };
+                }
+                else if (ADDSimplebasemap_0rule1_eval_expression(context)) {
+                  return {
+                pane: 'pane_ADDSimplebasemap_0',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,240,240,1.0)',
+            };
+                }
+                else if (ADDSimplebasemap_0rule2_eval_expression(context)) {
+                  return {
+                pane: 'pane_ADDSimplebasemap_0',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(163,189,209,1.0)',
+            };
+                }
+                else if (ADDSimplebasemap_0rule3_eval_expression(context)) {
+                  return {
+                pane: 'pane_ADDSimplebasemap_0',
+                stroke: false, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(222,220,210,1.0)',
+            };
+                }
+            else {
+                return {fill: false, stroke: false};
+            }
+        }
+        map.createPane('pane_ADDSimplebasemap_0');
+        map.getPane('pane_ADDSimplebasemap_0').style.zIndex = 400;
+        map.getPane('pane_ADDSimplebasemap_0').style['mix-blend-mode'] = 'normal';
+        var layer_ADDSimplebasemap_0 = new L.geoJson(json_ADDSimplebasemap_0, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_ADDSimplebasemap_0',
+            onEachFeature: pop_ADDSimplebasemap_0,
+            style: style_ADDSimplebasemap_0_0,
+        });
+        bounds_group.addLayer(layer_ADDSimplebasemap_0);
+        map.addLayer(layer_ADDSimplebasemap_0);
+        setBounds();
+        </script>
+    </body>
+</html>
